@@ -5,6 +5,7 @@ import Login from './Components/Login';
 import DashBoard from './Components/DashBoard';
 
 function App() {
+  console.log()
 
   let initialState = {
     users:[],
