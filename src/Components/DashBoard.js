@@ -5,9 +5,9 @@ function DashBoard() {
   let initStatet = {
     products: [
       { img: "https://static.toiimg.com/thumb/53096628.cms?imgsize=1832291&width=800&height=800", name: "Biryani", price: "300" },
+      { img: "https://static.toiimg.com/thumb/53096628.cms?imgsize=1832291&width=800&height=800", name: "Coft", price: "300" },
       { img: "https://static.toiimg.com/thumb/53096628.cms?imgsize=1832291&width=800&height=800", name: "Biryani", price: "300" },
-      { img: "https://static.toiimg.com/thumb/53096628.cms?imgsize=1832291&width=800&height=800", name: "Biryani", price: "300" },
-      { img: "https://static.toiimg.com/thumb/53096628.cms?imgsize=1832291&width=800&height=800", name: "Biryani", price: "300" },
+      { img: "https://static.toiimg.com/thumb/53096628.cms?imgsize=1832291&width=800&height=800", name: "Chicken", price: "300" },
       { img: "https://static.toiimg.com/thumb/53096628.cms?imgsize=1832291&width=800&height=800", name: "Biryani", price: "300" },
       { img: "https://static.toiimg.com/thumb/53096628.cms?imgsize=1832291&width=800&height=800", name: "Biryani", price: "300" },
       { img: "https://static.toiimg.com/thumb/53096628.cms?imgsize=1832291&width=800&height=800", name: "Biryani", price: "300" },
@@ -45,7 +45,7 @@ function DashBoard() {
                     borderTopLeftRadius: 10,
                     borderTopRightRadius: 10,
 
-                  }} className="img-div" src={product.img} />
+                  }} className="img-div" src={`https://static.toiimg.com/thumb/53096628.cms?imgsize=1832291&width=800&height=800`} />
                   <h4>{product.name}</h4>
                   <h4>{product.price}</h4>
                 </div>
