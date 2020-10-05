@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './Dashboard.css'
 
-function DashBoard() {
+function DashBoard(props) {
   let initStatet = {
     products: [
       { img: "https://static.toiimg.com/thumb/53096628.cms?imgsize=1832291&width=800&height=800", name: "Biryani", price: "300" },
@@ -32,7 +32,10 @@ function DashBoard() {
                 borderColor: "rgba(0, 0,0,0.1)",
                 margin: 10,
                 cursor: "pointer"
-              }}>
+
+              }}
+                onClick={() => props.addItemToCart(product)}
+              >
 
                 <div className="card-inside" style={{
                   display: 'flex',

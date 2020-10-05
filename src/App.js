@@ -3,6 +3,7 @@ import './App.css';
 import Registration from './Components/Registration';
 import Login from './Components/Login';
 import DashBoard from './Components/DashBoard';
+import Cart from './Components/Cart';
 
 
 function App() {
@@ -44,6 +45,10 @@ function App() {
   const componentHandler = idx => {
     setState(pre => ({ ...pre, componentIndex: idx }))
   }
+  const addItemToCart = item => {
+    state.userCart.push(item);
+    setState(pre => ({ ...pre, userCart: state.userCart }))
+  }
 
   console.log('State :', state)
   return (
@@ -54,6 +59,9 @@ function App() {
             return <li key={index} style={{ listStyle: "none", margin: 10, cursor: 'pointer', color: '#fff' }} onClick={() => componentHandler(index)}> {item} </li>
           })
         }
+        <li style={{ listStyle: "none", textAlign: 'right', width: "50%" }}>
+          <Cart userCart={state.userCart} />
+        </li>
       </ul>
       {
         state.componentIndex === 0 ?
@@ -62,9 +70,11 @@ function App() {
           state.componentIndex === 1 ?
             <Login title="Login" loginHandler={loginHandler} />
             :
-            <DashBoard title="DashBoard" />
+            <DashBoard title="DashBoard" addItemToCart={addItemToCart} />
+
       }
-      <div id="app"></div>
+      <div id="app">
+      </div>
       {/* <div>
            <input type='text' id='name' value={state.name}  placeholder='Enter your Name please' onChange={onChangeHandler} />    <br /> 
            <input type='text' id='email' value={state.email}  placeholder='Enter your Email please' onChange={onChangeHandler} />    <br /> 
