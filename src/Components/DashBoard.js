@@ -5,12 +5,12 @@ function DashBoard() {
   let initStatet = {
     products: [
       { img: "https://static.toiimg.com/thumb/53096628.cms?imgsize=1832291&width=800&height=800", name: "Biryani", price: "300" },
-      { img: "https://static.toiimg.com/thumb/53096628.cms?imgsize=1832291&width=800&height=800", name: "Coft", price: "300" },
-      { img: "https://static.toiimg.com/thumb/53096628.cms?imgsize=1832291&width=800&height=800", name: "Biryani", price: "300" },
-      { img: "https://static.toiimg.com/thumb/53096628.cms?imgsize=1832291&width=800&height=800", name: "Chicken", price: "300" },
-      { img: "https://static.toiimg.com/thumb/53096628.cms?imgsize=1832291&width=800&height=800", name: "Biryani", price: "300" },
-      { img: "https://static.toiimg.com/thumb/53096628.cms?imgsize=1832291&width=800&height=800", name: "Biryani", price: "300" },
-      { img: "https://static.toiimg.com/thumb/53096628.cms?imgsize=1832291&width=800&height=800", name: "Biryani", price: "300" },
+      { img: "https://hamariweb.com/recipes/images/recipeimages/469.jpg", name: "Chicken Karahi", price: "1300" },
+      { img: "https://www.spendwithpennies.com/wp-content/uploads/2019/06/Grilled-BBQ-Chicken-SpendWithePennies-4.jpg", name: "Chicken BBQ", price: "1000" },
+      { img: "https://sifu.unileversolutions.com/image/en-PK/recipe-topvisual/2/1260-709/darbari-malai-handi-50458173.jpg", name: "Chicken Handi", price: "1500" },
+      { img: "https://lh3.googleusercontent.com/proxy/PzU0iDxhKxafZFUaS52k-O230HlxosUTUj4L3ENuCDpjq50pu6miIbK2SSBFW9mAsHVPVy4hMAE27g8UhrB9BN7_6I8ZZdLwnORTp4_MBiDQ3rpAtzRT6x-2pdyvfBygztSCWQ", name: "Chapli Kabab", price: "500" },
+      { img: "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRDEe1eJtLpTuMLtG-5f3WafHMHAk1OZISqzQ&usqp=CAU", name: "Fish Grill", price: "900" },
+      { img: "https://ikneadtoeat.com/wp-content/uploads/2019/09/daal-mash-2.jpg", name: "Dall Mash", price: "200" },
 
     ]
   }
