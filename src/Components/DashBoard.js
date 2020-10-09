@@ -11,6 +11,7 @@ function DashBoard() {
       { img: "https://lh3.googleusercontent.com/proxy/PzU0iDxhKxafZFUaS52k-O230HlxosUTUj4L3ENuCDpjq50pu6miIbK2SSBFW9mAsHVPVy4hMAE27g8UhrB9BN7_6I8ZZdLwnORTp4_MBiDQ3rpAtzRT6x-2pdyvfBygztSCWQ", name: "Chapli Kabab", price: "500" },
       { img: "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRDEe1eJtLpTuMLtG-5f3WafHMHAk1OZISqzQ&usqp=CAU", name: "Fish Grill", price: "900" },
       { img: "https://ikneadtoeat.com/wp-content/uploads/2019/09/daal-mash-2.jpg", name: "Dall Mash", price: "200" },
+      { img: "https://image.shutterstock.com/image-photo/crispy-breaded-chicken-burger-mozzarella-260nw-1418912660.jpg", name: "Zinger Burger", price: "500" },
 
     ]
   }
