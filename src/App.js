@@ -4,18 +4,22 @@ import Registration from './Components/Registration';
 import Login from './Components/Login';
 import DashBoard from './Components/DashBoard';
 import Cart from './Components/Cart';
+import ViewCart from './Components/ViewCart';
 
 
 function App() {
-  console.log()
+  // console.log()
 
   let initialState = {
     users: [],
     componentIndex: 0,
-    userCart: []
+    userCart: [],
+    cartLength: 0,
+    cardIndex: null
   }
   const [state, setState] = useState(initialState);
   const { users } = state;
+  // const { userCart } = state;
 
   const addUserHandler = user => {
     users.push(user)
@@ -45,10 +49,62 @@ function App() {
   const componentHandler = idx => {
     setState(pre => ({ ...pre, componentIndex: idx }))
   }
-  const addItemToCart = item => {
-    state.userCart.push(item);
-    setState(pre => ({ ...pre, userCart: state.userCart }))
+  
+  const addItemToCart = (item, idx) => {
+    let findItem = state.userCart.find((doc, index) => {
+      if(doc.id === item.id) return doc;
+      else return false;
+    });
+    if(findItem){
+      return quantityHandler(findItem.id);
+    } else {
+      state.userCart.push(item);
+      setState(pre => ({ ...pre, userCart: state.userCart, cartLength: pre.cartLength + 1, cardIndex: idx }))
+    }
+//     let updatedList =  state.userCart.map((cartitem,i) => {
+//       if (item.id===cartitem.id){
+//         cartitem.qty = cartitem.qty+1;
+//         cartitem.totalPrice = cartitem.price * cartitem.qty
+//         return cartitem
+//       }else {
+// return cartitem;
+//       }  
+//     })
+    // state.userCart.push(item);
+    // setState(pre => ({ ...pre, userCart: state.userCart }))
+          // setState(pre => ({...pre, userCart: updatedList }))
+  
+    // state.userCart.push(item);
+    // setState(pre => ({ ...pre, userCart: state.userCart }))
   }
+
+  const quantityHandler = (id, a) => {  
+    console.log(id);
+if (a===2){
+  let updatedList =  state.userCart.map((cartitem,i) => {
+    if (id===cartitem.id){
+      cartitem.qty = cartitem.qty-1;
+      cartitem.totalPrice = cartitem.price * cartitem.qty
+      return cartitem;
+    } else return cartitem;
+
+  })
+        setState(pre => ({...pre, userCart: updatedList, cartLength: pre.cartLength - 1 }))
+
+}else{
+
+  let updatedList =  state.userCart.map((cartitem,i) => {
+     if (id===cartitem.id){
+       cartitem.qty = cartitem.qty+1;
+       cartitem.totalPrice = cartitem.price * cartitem.qty
+       return cartitem;
+     } else return cartitem;
+ 
+   })
+         setState(pre => ({...pre, userCart: updatedList, cartLength: pre.cartLength + 1 }))
+}
+
+      }
 
   console.log('State :', state)
   return (
@@ -60,7 +116,7 @@ function App() {
           })
         }
         <li style={{ listStyle: "none", textAlign: 'right', width: "50%" }}>
-          <Cart userCart={state.userCart} />
+          <Cart {...state} componentHandler={componentHandler} />
         </li>
       </ul>
       {
@@ -70,7 +126,10 @@ function App() {
           state.componentIndex === 1 ?
             <Login title="Login" loginHandler={loginHandler} />
             :
-            <DashBoard title="DashBoard" addItemToCart={addItemToCart} />
+            state.componentIndex === 2 ?
+            <DashBoard {...state} addItemToCart={addItemToCart} />
+            :
+            <ViewCart userCart={state.userCart} quantityHandler={quantityHandler} />
 
       }
       <div id="app">

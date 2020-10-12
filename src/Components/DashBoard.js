@@ -1,22 +1,43 @@
-<<<<<<< Updated upstream
+// <<<<<<< Updated upstream
 import React, { useState } from 'react';
 import './Dashboard.css'
+import image1 from '../Assets/beryani.webp';
+import image2 from '../Assets/chicken-karahi-1.jpg';
+import image3 from '../Assets/BBQ.jpg';
+import image4 from '../Assets/handi.jpg';
+import image5 from '../Assets/chapliKabab.jpg';
+import image6 from '../Assets/fishGrill.jpg';
+import image7 from '../Assets/daalMash.jpg';
+import image8 from '../Assets/kabaliPulao.jpg';
+// import image2 from '../Assets/chicken-karahi-1.jpg';
+
 
 function DashBoard(props) {
   let initStatet = {
     products: [
-      { img: "https://static.toiimg.com/thumb/53096628.cms?imgsize=1832291&width=800&height=800", name: "Biryani", price: "300" },
-      { img: "https://hamariweb.com/recipes/images/recipeimages/469.jpg", name: "Chicken Karahi", price: "1300" },
-      { img: "https://www.spendwithpennies.com/wp-content/uploads/2019/06/Grilled-BBQ-Chicken-SpendWithePennies-4.jpg", name: "Chicken BBQ", price: "1000" },
-      { img: "https://sifu.unileversolutions.com/image/en-PK/recipe-topvisual/2/1260-709/darbari-malai-handi-50458173.jpg", name: "Chicken Handi", price: "1500" },
-      { img: "https://lh3.googleusercontent.com/proxy/PzU0iDxhKxafZFUaS52k-O230HlxosUTUj4L3ENuCDpjq50pu6miIbK2SSBFW9mAsHVPVy4hMAE27g8UhrB9BN7_6I8ZZdLwnORTp4_MBiDQ3rpAtzRT6x-2pdyvfBygztSCWQ", name: "Chapli Kabab", price: "500" },
-      { img: "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRDEe1eJtLpTuMLtG-5f3WafHMHAk1OZISqzQ&usqp=CAU", name: "Fish Grill", price: "900" },
-      { img: "https://ikneadtoeat.com/wp-content/uploads/2019/09/daal-mash-2.jpg", name: "Dall Mash", price: "200" },
-      { img: "https://image.shutterstock.com/image-photo/crispy-breaded-chicken-burger-mozzarella-260nw-1418912660.jpg", name: "Zinger Burger", price: "500" },
+      { id: 1, img: image1, name: "Biryani", price: "300", qty:1, count:0 },
+      { id: 2, img: image2, name: "Chicken Karahi", price: "1300", qty:1,count:0 },
+      { id: 3, img: image3, name: "Chicken BBQ", price: "1000", qty:1,count:0 },
+      { id: 4, img: image4, name: "Chicken Handi", price: "1500", qty:1,count:0 },
+      { id: 5, img: image5, name: "Chapli Kabab", price: "500", qty:1,count:0 },
+      { id: 6, img: image6, name: "Fish Grill", price: "900", qty:1,count:0 },
+      { id: 7, img: image6, name: "Fish Grill", price: "900", qty:1,count:0 },
+      { id: 8, img: image7, name: "Dall Mash", price: "200", qty:1,count:0 },
+      { id: 9, img: image8, name: "Kabli pulao", price: "500", qty:1,count:0 },
 
     ]
   }
   const [state, setState] = useState(initStatet);
+  const addItemHandler = (product) => {
+    let updateRecord = state.products.map((X, i) => {
+      if(X.id === product.id){
+        X.count = X.count + 1;
+        return X;
+      } else return X;
+    });
+    setState(pre => ({...pre, products: updateRecord}));
+    props.addItemToCart(product);
+  }
   return (
     <div>
       <h1>Order your food</h1>
@@ -36,7 +57,7 @@ function DashBoard(props) {
                 cursor: "pointer"
 
               }}
-                onClick={() => props.addItemToCart(product)}
+                onClick={() => addItemHandler(product) }
               >
 
                 <div className="card-inside" style={{
@@ -50,9 +71,10 @@ function DashBoard(props) {
                     borderTopLeftRadius: 10,
                     borderTopRightRadius: 10,
 
-                  }} className="img-div" src={`https://static.toiimg.com/thumb/53096628.cms?imgsize=1832291&width=800&height=800`} />
+                  }} className="img-div" src={product.img} />
                   <h4>{product.name}</h4>
                   <h4>{product.price}</h4>
+                  <h4>{product.count}</h4>
                 </div>
               </div>
             )
@@ -62,8 +84,12 @@ function DashBoard(props) {
       </div>
 
     </div >
-  )
-=======
+  );
+      }
+export default DashBoard
+
+
+// =======
 // import React from 'react'
 
 // function DashBoard() {
@@ -76,72 +102,72 @@ function DashBoard(props) {
 
 // export default DashBoard
 
-import React, { useState } from "react";
+// import React, { useState } from "react";
 // import DashBoard from './DashBoard';
 
-function DashBoard() {
-  const [image, setImage] = useState({ preview: "", raw: "" });
+// function DashBoard() {
+//   const [image, setImage] = useState({ preview: "", raw: "" });
 
-  const handleChange = e => {
-    if (e.target.files.length) {
-      setImage({
-        preview: URL.createObjectURL(e.target.files[0]),
-        raw: e.target.files[0]
-      });
-    }
-  };
+//   const handleChange = e => {
+//     if (e.target.files.length) {
+//       setImage({
+//         preview: URL.createObjectURL(e.target.files[0]),
+//         raw: e.target.files[0]
+//       });
+//     }
+//   };
 
-  const handleUpload = async e => {
-    e.preventDefault();
-    const formData = new FormData();
-    formData.append("image", image.raw);
+//   const handleUpload = async e => {
+//     e.preventDefault();
+//     const formData = new FormData();
+//     formData.append("image", image.raw);
 
-    await fetch("YOUR_URL", {
-      method: "POST",
-      headers: {
-        "Content-Type": "multipart/form-data"
-      },
-      body: formData
-    });
-  };
+//     await fetch("YOUR_URL", {
+//       method: "POST",
+//       headers: {
+//         "Content-Type": "multipart/form-data"
+//       },
+//       body: formData
+//     });
+//   };
 
-  return (
-    <div>
+//   return (
+//     <div>
 
-    <div>
-      <div>
-        <div>
-          <div>
+//     <div>
+//       <div>
+//         <div>
+//           <div>
 
-          </div>
-        </div>
-      </div>
-    </div>
+//           </div>
+//         </div>
+//       </div>
+//     </div>
 
-      <label htmlFor="upload-button">
-        {image.preview ? (
-          <img src={image.preview} alt="dummy" width="600" height="600" />
-        ) : (
-          <>
-            <span className="fa-stack fa-2x mt-3 mb-2">
-              <i className="fas fa-circle fa-stack-2x" />
-              <i className="fas fa-store fa-stack-1x fa-inverse" />
-            </span>
-            <h5 className="text-center" style={{cursor:"pointer"}}>Click to Upload your photo</h5>
-          </>
-        )}
-      </label>
-      <input
-        type="file"
-        id="upload-button"
-        style={{ display: "none" }}
-        onChange={handleChange}
-      />
-      <br />
-      <button onClick={handleUpload}>Upload</button>
-    </div>
-  );
->>>>>>> Stashed changes
-}
+//       <label htmlFor="upload-button">
+//         {image.preview ? (
+//           <img src={image.preview} alt="dummy" width="600" height="600" />
+//         ) : (
+//           <>
+//             <span className="fa-stack fa-2x mt-3 mb-2">
+//               <i className="fas fa-circle fa-stack-2x" />
+//               <i className="fas fa-store fa-stack-1x fa-inverse" />
+//             </span>
+//             <h5 className="text-center" style={{cursor:"pointer"}}>Click to Upload your photo</h5>
+//           </>
+//         )}
+//       </label>
+//       <input
+//         type="file"
+//         id="upload-button"
+//         style={{ display: "none" }}
+//         onChange={handleChange}
+//       />
+//       <br />
+//       <button onClick={handleUpload}>Upload</button>
+//     </div>
+//   );
+// // >>>>>>> Stashed changes
+// }
 
-export default DashBoard
+// export default DashBoard
