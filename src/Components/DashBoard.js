@@ -28,6 +28,7 @@ function DashBoard(props) {
     ]
   }
   const [state, setState] = useState(initStatet);
+  
   const addItemHandler = (product) => {
     let updateRecord = state.products.map((X, i) => {
       if(X.id === product.id){
