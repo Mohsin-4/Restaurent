@@ -1,5 +1,5 @@
 // <<<<<<< Updated upstream
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './Dashboard.css'
 import image1 from '../Assets/beryani.webp';
 import image2 from '../Assets/chicken-karahi-1.jpg';
@@ -24,10 +24,23 @@ function DashBoard(props) {
       { id: 7, img: image6, name: "Fish Grill", price: "900", qty:1,count:0 },
       { id: 8, img: image7, name: "Dall Mash", price: "200", qty:1,count:0 },
       { id: 9, img: image8, name: "Kabli pulao", price: "500", qty:1,count:0 },
-
-    ]
+    ],
+    jsonData: []
   }
-  const [state, setState] = useState(initStatet);
+  const [state, setState] = useState({
+    products: [
+      { id: 1, img: image1, name: "Biryani", price: "300", qty:1, count:0 },
+      { id: 2, img: image2, name: "Chicken Karahi", price: "1300", qty:1,count:0 },
+      { id: 3, img: image3, name: "Chicken BBQ", price: "1000", qty:1,count:0 },
+      { id: 4, img: image4, name: "Chicken Handi", price: "1500", qty:1,count:0 },
+      { id: 5, img: image5, name: "Chapli Kabab", price: "500", qty:1,count:0 },
+      { id: 6, img: image6, name: "Fish Grill", price: "900", qty:1,count:0 },
+      { id: 7, img: image6, name: "Fish Grill", price: "900", qty:1,count:0 },
+      { id: 8, img: image7, name: "Dall Mash", price: "200", qty:1,count:0 },
+      { id: 9, img: image8, name: "Kabli pulao", price: "500", qty:1,count:0 },
+    ],
+    jsonData: []
+  });
   
   const addItemHandler = (product) => {
     let updateRecord = state.products.map((X, i) => {
@@ -38,7 +51,29 @@ function DashBoard(props) {
     });
     setState(pre => ({...pre, products: updateRecord}));
     props.addItemToCart(product);
-  }
+  };
+
+  useEffect(() => {
+    // mount logic
+    console.log('Upper effect')
+
+
+    // unmount logic with return
+    // return () => {
+
+    // }
+  }, [state.products, state.jsonData]);
+
+  useEffect(() => {
+    console.log("useEffect called---");
+    fetch("https://jsonplaceholder.typicode.com/posts").then(res => res.json()).then(suc => setState(pre => ({...pre, jsonData: suc})) ).catch(err => console.log(err)) 
+return () => {
+  console.log('Cleanup called---');
+  setState(pre => ({ jsonData: [], products: []}));
+  console.log(state)
+}
+  }, [])
+  console.log('dashboard state :', state)
   return (
     <div>
       <h1>Order your food</h1>

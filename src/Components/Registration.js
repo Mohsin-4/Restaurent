@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import './Test.css';
 
 function Registration(props) {
     const { cb } = props;
@@ -31,13 +32,32 @@ function Registration(props) {
     }
 
     return (
-        <div>
+        <div class="mainDiv">
+            
+            <div class="titleFlex"> 
             <h1>{props.title}</h1>
-            <label>Name:</label> <input type="text" value={name} id="name" placeholder="Enter your Name" onChange={onChangeHandler} />
-            <label>Email:</label> <input type="text" value={email} id="email" placeholder="Enter your Email" onChange={onChangeHandler} />
-            <label>Password:</label> <input type="password" value={password} id="password" placeholder="Enter your Password" onChange={onChangeHandler} />
+            </div>
+            
+            <div class="nameFlex">
+            {/* <label>Name</label> */}
+             <input type="text" value={name} id="name" placeholder="Enter your Name" onChange={onChangeHandler} />
+            </div>
+            
+            <div class="emailFlex">
+            {/* <label>Email</label> */}
+             <input type="text" value={email} id="email" placeholder="Enter your Email" onChange={onChangeHandler} />
+            </div>
+
+            <div class="passwordFlex">
+            {/* <label>Password</label>  */}
+            <input type="password" value={password} id="password" placeholder="Enter your Password" onChange={onChangeHandler} />
+            </div>
+
+            <div class="buttonFlex">
             <button onClick={addUser}> Register </button>
-        </div>
+            </div>
+
+     </div>
     )
 }
 

@@ -1,0 +1,61 @@
+div .mainDiv{
+    display: flex;
+    flex-direction: column;
+    background-color: lavender;
+    margin-top: 40px;
+    margin-left: 390px;
+    margin-right: 390px;
+    padding: 50px;
+    flex-wrap: wrap;
+
+    }
+.titleFlex{
+    /* padding: 5px; */
+    color: black;
+    font-size: large;
+    /* font-style: italic; */
+    /* border: 1px solid steelblue; */
+    /* justify-content: space-between; */
+    /* background-color: blue; */
+}
+input{
+    width: 50%;
+    padding: 5px;
+    border: solid darkgray;
+    border-style: outset;
+    align-content: center;
+    text-align: center;
+    /* background-color: antiquewhite; */
+}
+.nameFlex{
+    padding: 10px;
+    /* width: 30%; */
+    align-items: center;
+    justify-content: space-between;
+}
+.emailFlex{
+    padding: 10px;
+    /* width: 30%; */
+    align-items: center;
+    justify-content: space-between;
+    
+}
+.passwordFlex{
+    padding: 10px;
+    /* width: 30%; */
+    align-items: center;
+    justify-content: space-between;
+    
+}
+button{
+    margin-top: 10px;
+    border: solid darkgray;
+    color: rgb(0, 110, 255);
+    background-color: darkgray;
+    border-style: outset;
+    padding: 5px;
+    width: 20%;
+    align-items: center;
+    justify-content: space-between;
+    
+}

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './App.css';
 import Registration from './Components/Registration';
 import Login from './Components/Login';
@@ -19,13 +19,17 @@ function App() {
   }
   const [state, setState] = useState(initialState);
   const { users } = state;
+  useEffect(() => {
+    // setState(pre => ({...pre, test: true}))
+    console.log(" App useEffect called---")
+  },[state.cartLength]);
   // const { userCart } = state;
 
   const addUserHandler = user => {
     users.push(user)
     setState(prevState => ({
       ...prevState,
-      users,
+      users
     }))
     alert("register Successfully")
   }
@@ -51,6 +55,7 @@ function App() {
   }
   
   const addItemToCart = (item, idx) => {
+    console.log(idx);
     let findItem = state.userCart.find((doc, index) => {
       if(doc.id === item.id) return doc;
       else return false;
@@ -87,7 +92,6 @@ if (a===2){
       cartitem.totalPrice = cartitem.price * cartitem.qty
       return cartitem;
     } else return cartitem;
-
   })
         setState(pre => ({...pre, userCart: updatedList, cartLength: pre.cartLength - 1 }))
 
@@ -106,7 +110,8 @@ if (a===2){
 
       }
 
-  console.log('State :', state)
+  // console.log('State :', state)
+
   return (
     <div className="App">
       <ul style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'center', background: 'grey' }}>
